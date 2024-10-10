@@ -1,6 +1,6 @@
 require('code_runner').setup({
     filetype = {
-        python = "python -u",
+        python = "python3 -u",
         cpp= {
             "g++ $dir/$fileName -o $dir/$fileNameWithoutExt && $dir/$fileNameWithoutExt",
             "$dir/$fileNameWithoutExt.exe",

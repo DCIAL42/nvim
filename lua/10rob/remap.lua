@@ -43,9 +43,17 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-vim.keymap.set("n", "dsn", function()
+vim.keymap.set("n", "<leader>dsn", function()
     local file = io.open(vim.fn.expand("%"), "a")
-    file:write("\ni = 0\nwhile i < n:\n\ti += 1")
-    file:close()
-    vim.cmd("bufdo e")
+    if file ~= nil then
+        file:write("\ni = 0\nwhile i < n:\n\ti += 1")
+        file:close()
+        vim.cmd("bufdo e")
+    end
 end)
+
+-- vim.keymap.set("i", "{", "{}<C-c>i")
+-- vim.keymap.set("i", "(", "()<C-c>i")
+-- vim.keymap.set("i", "[", "[]<C-c>i")
+
+-- vim.keymap.set("n", "<Tab>", ":n<CR>", { silent = true })
