@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/daniel-cooke/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
     url = "https://github.com/CRAG666/code_runner.nvim"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/daniel-cooke/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/daniel-cooke/.local/share/nvim/site/pack/packer/start/harpoon",
