@@ -1,1 +1,1 @@
-require('10rob')
+require('config')

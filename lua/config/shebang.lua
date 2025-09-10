@@ -4,6 +4,10 @@ local prefixes = {
     ["sh"] = "bash",
     ["lua"] = "lua",
 }
+
+if prefixes[vim.bo.filetype] == nil then
+    return
+end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "python", "lua", "sh" },
     callback = function()
