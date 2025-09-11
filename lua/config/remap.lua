@@ -42,6 +42,8 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 --vim.keymap.set("n", "<leader>dsn", function()
 --    local file = io.open(vim.fn.expand("%"), "a")
 --    if file ~= nil then
@@ -55,4 +57,4 @@ end)
 -- vim.keymap.set("i", "(", "()<C-c>i")
 -- vim.keymap.set("i", "[", "[]<C-c>i")
 
--- vim.keymap.set("n", "<Tab>", ":n<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", ":n<CR>", { silent = true })
