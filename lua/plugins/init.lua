@@ -1,6 +1,7 @@
 return {
     --{ "rose-pine/neovim", name = "rose-pine" },
 
+    --[[
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -14,6 +15,19 @@ return {
 
             vim.cmd.colorscheme "tokyonight"
         end,
+    },
+    ]] --
+    {
+        "vague2k/vague.nvim",
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other plugins
+        config = function()
+            -- NOTE: you do not need to call setup if you don't want to.
+            require("vague").setup({
+                transparent = true
+            })
+            vim.cmd("colorscheme vague")
+        end
     },
 
     {
@@ -30,7 +44,9 @@ return {
         }
     },
 
-    'neovim/nvim-lspconfig',
+    {
+        'neovim/nvim-lspconfig',
+    },
 
     {
         "mason-org/mason.nvim",
@@ -85,10 +101,10 @@ return {
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
-        config = function ()
+        config = function()
             require("luasnip").setup({ enable_autosnippets = true })
             require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
-        end
+        end,
     },
 
     {
@@ -101,7 +117,7 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {
             options = {
-                theme = "tokyonight"
+                theme = "vague"
             }
         }
     },

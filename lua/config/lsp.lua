@@ -3,7 +3,6 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('luals')
 vim.lsp.enable('ts_ls')
 
--- Setup nvim-cmp.
 local cmp = require 'cmp'
 
 cmp.setup({
@@ -14,7 +13,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
+        ['<CR>'] = cmp.mapping.confirm(), -- Accept currently selected item.
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),

@@ -51,4 +51,6 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- vim.keymap.set("i", "(", "()<C-c>i")
 -- vim.keymap.set("i", "[", "[]<C-c>i")
 
-vim.keymap.set("n", "<Tab>", ":n<CR>", { silent = true })
+--local ls = require("luasnip")
+vim.keymap.set("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
