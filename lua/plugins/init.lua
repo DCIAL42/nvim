@@ -84,7 +84,11 @@ return {
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        config = function ()
+            require("luasnip").setup({ enable_autosnippets = true })
+            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+        end
     },
 
     {
