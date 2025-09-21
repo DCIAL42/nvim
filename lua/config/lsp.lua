@@ -1,6 +1,7 @@
 vim.lsp.enable('pyright')
 vim.lsp.enable('clangd')
 vim.lsp.enable('luals')
+vim.lsp.enable('ts_ls')
 
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
