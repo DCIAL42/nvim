@@ -1,7 +1,9 @@
-vim.lsp.enable('pyright')
-vim.lsp.enable('clangd')
-vim.lsp.enable('luals')
-vim.lsp.enable('ts_ls')
+vim.lsp.enable({
+    'pyright',
+    'clangd',
+    'lua_ls',
+    'bashls',
+})
 
 local cmp = require 'cmp'
 
