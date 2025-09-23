@@ -112,6 +112,7 @@ return {
         opts = {}
     },
 
+    --[[
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -121,6 +122,7 @@ return {
             }
         }
     },
+    ]]--
 
     {
         'hrsh7th/nvim-cmp',
