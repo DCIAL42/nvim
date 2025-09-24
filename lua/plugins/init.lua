@@ -1,7 +1,6 @@
 return {
     --{ "rose-pine/neovim", name = "rose-pine" },
 
-    --[[
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -16,7 +15,7 @@ return {
             vim.cmd.colorscheme "tokyonight"
         end,
     },
-    ]] --
+    --[[
     {
         "vague2k/vague.nvim",
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
@@ -29,6 +28,7 @@ return {
             vim.cmd("colorscheme vague")
         end
     },
+    ]]--
 
     {
         "nvim-treesitter/nvim-treesitter",
