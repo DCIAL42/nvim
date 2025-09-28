@@ -3,6 +3,9 @@ vim.lsp.enable({
     'clangd',
     'lua_ls',
     'bashls',
+    'beautysh',
+    'rust_analyzer',
+    'cmake',
 })
 
 local cmp = require 'cmp'
