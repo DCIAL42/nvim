@@ -58,3 +58,5 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- vim.keymap.set("i", "[", "[]<C-c>i")
 
 vim.keymap.set("n", "<Tab>", ":n<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>e", ":!einstein %<CR>")
