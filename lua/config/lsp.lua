@@ -3,9 +3,9 @@ vim.lsp.enable({
     'clangd',
     'lua_ls',
     'bashls',
-    'beautysh',
     'rust_analyzer',
-    'cmake',
+    'tinymist',
+    'r_language_server',
 })
 
 local cmp = require 'cmp'
