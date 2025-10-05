@@ -1,8 +1,13 @@
-vim.lsp.enable('pyright')
-vim.lsp.enable('clangd')
-vim.lsp.enable('luals')
+vim.lsp.enable({
+    'pyright',
+    'clangd',
+    'lua_ls',
+    'bashls',
+    'beautysh',
+    'rust_analyzer',
+    'cmake',
+})
 
--- Setup nvim-cmp.
 local cmp = require 'cmp'
 
 cmp.setup({
@@ -13,7 +18,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
+        ['<CR>'] = cmp.mapping.confirm(), -- Accept currently selected item.
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),

@@ -15,6 +15,20 @@ return {
             vim.cmd.colorscheme "tokyonight"
         end,
     },
+    --[[
+    {
+        "vague2k/vague.nvim",
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other plugins
+        config = function()
+            -- NOTE: you do not need to call setup if you don't want to.
+            require("vague").setup({
+                transparent = true
+            })
+            vim.cmd("colorscheme vague")
+        end
+    },
+    ]]--
 
     {
         "nvim-treesitter/nvim-treesitter",
@@ -30,7 +44,9 @@ return {
         }
     },
 
-    'neovim/nvim-lspconfig',
+    {
+        'neovim/nvim-lspconfig',
+    },
 
     {
         "mason-org/mason.nvim",
@@ -84,7 +100,11 @@ return {
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        config = function()
+            require("luasnip").setup({ enable_autosnippets = true })
+            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+        end,
     },
 
     {
@@ -92,15 +112,17 @@ return {
         opts = {}
     },
 
+    --[[
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {
             options = {
-                theme = "tokyonight"
+                theme = "vague"
             }
         }
     },
+    ]]--
 
     {
         'hrsh7th/nvim-cmp',
@@ -114,6 +136,13 @@ return {
             -- Or
             -- {'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'},
         }
+    },
+
+    {
+        'chomosuke/typst-preview.nvim',
+        lazy = false, -- or ft = 'typst'
+        version = '1.*',
+        opts = {}, -- lazy.nvim will implicitly calls `setup {}`
     },
 
     --use("eandrju/cellular-automaton.nvim")
