@@ -1,12 +1,16 @@
 vim.lsp.enable({
-    'pyright',
-    'clangd',
-    'lua_ls',
-    'bashls',
-    'rust_analyzer',
-    'tinymist',
-    'r_language_server',
+    'ruff', 'pylsp', 'clangd',
+    'lua_ls', 'bashls', 'rust_analyzer',
+    'tinymist', 'r_language_server', 'ts_ls',
+    'eslint', 'tailwindcss', 'jsonls',
+    'biome',
 })
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+local filetype_extend = require("luasnip").filetype_extend
+filetype_extend("typescriptreact", { "html" })
+filetype_extend("javascriptreact", { "html" })
 
 local cmp = require 'cmp'
 
@@ -25,7 +29,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         -- Add other sources if needed:
-        -- { name = 'luasnip' },
+        { name = 'luasnip' },
         -- { name = 'buffer' },
         -- { name = 'path' },
     })
@@ -40,4 +44,12 @@ vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
     severity_sort = true,
+})
+
+require('nvim-ts-autotag').setup({
+    opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = false
+    },
 })

@@ -1,42 +1,4 @@
 return {
-    --{ "rose-pine/neovim", name = "rose-pine" },
-
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-        config = function()
-            require("tokyonight").setup({
-                style = "night",
-                transparent = "true",
-            })
-
-            vim.cmd.colorscheme "tokyonight"
-        end,
-    },
-    --[[
-    {
-        "vague2k/vague.nvim",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other plugins
-        config = function()
-            -- NOTE: you do not need to call setup if you don't want to.
-            require("vague").setup({
-                transparent = true
-            })
-            vim.cmd("colorscheme vague")
-        end
-    },
-    ]]--
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = 'master',
-        lazy = false,
-        build = ":TSUpdate"
-    },
-
     {
         "mbbill/undotree",
         keys = {
@@ -54,6 +16,7 @@ return {
             require("mason").setup()
         end,
     },
+
     {
         "folke/trouble.nvim",
         opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -95,6 +58,8 @@ return {
         end,
     },
 
+    { "rafamadriz/friendly-snippets" },
+
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
@@ -122,7 +87,7 @@ return {
             }
         }
     },
-    ]]--
+    ]] --
 
     {
         'hrsh7th/nvim-cmp',
@@ -132,20 +97,24 @@ return {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
             -- Snippet engine (choose one)
-            { 'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip' },
+            -- { 'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip' },
             -- Or
-            -- {'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'},
+            {'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'},
+            "rafamadriz/friendly-snippets",
         }
+    },
+
+    {
+        'windwp/nvim-ts-autotag',
     },
 
     {
         'chomosuke/typst-preview.nvim',
         lazy = false, -- or ft = 'typst'
         version = '1.*',
-        opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+        opts = {},    -- lazy.nvim will implicitly calls `setup {}`
     },
 
-    --use("eandrju/cellular-automaton.nvim")
     --use("lervag/vimtex")
     --use {
     --    "windwp/nvim-autopairs",
@@ -154,13 +123,7 @@ return {
     --        require("nvim-autopairs").setup {}
     --    end
     --}
-    --use("github/copilot.vim")
+    { "github/copilot.vim" },
     --use("laytan/cloak.nvim")
-    --use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    --use('nvim-treesitter/playground')
     --use('tpope/vim-fugitive')
-    --use('CRAG666/code_runner.nvim')
-
-    --use({ 'hrsh7th/nvim-cmp' })
-    --use({ 'hrsh7th/cmp-nvim-lsp' })
 }
