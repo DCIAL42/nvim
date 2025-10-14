@@ -99,7 +99,7 @@ return {
             -- Snippet engine (choose one)
             -- { 'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip' },
             -- Or
-            {'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'},
+            { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
             "rafamadriz/friendly-snippets",
         }
     },
@@ -115,6 +115,18 @@ return {
         opts = {},    -- lazy.nvim will implicitly calls `setup {}`
     },
 
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    },
+
     --use("lervag/vimtex")
     --use {
     --    "windwp/nvim-autopairs",
@@ -123,7 +135,12 @@ return {
     --        require("nvim-autopairs").setup {}
     --    end
     --}
-    { "github/copilot.vim" },
+    {
+        "github/copilot.vim",
+        config = function()
+            vim.cmd("Copilot disable")
+        end,
+    },
     --use("laytan/cloak.nvim")
     --use('tpope/vim-fugitive')
 }
