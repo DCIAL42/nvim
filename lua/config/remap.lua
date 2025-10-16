@@ -57,17 +57,3 @@ vim.keymap.set("n", "<leader>e", ":!einstein %<CR>")
 vim.keymap.set("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
--- Copilot
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
-vim.keymap.set("n", "<leader>ct", function()
-    if vim.g.copilot_enabled == true then
-        vim.g.copilot_enabled = false
-        print("Copilot disabled")
-    else
-        vim.g.copilot_enabled = true
-        print("Copilot enabled")
-    end
-end
-)

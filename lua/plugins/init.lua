@@ -135,12 +135,27 @@ return {
     --        require("nvim-autopairs").setup {}
     --    end
     --}
+    --[[
     {
         "github/copilot.vim",
         config = function()
             vim.cmd("Copilot disable")
+            vim.g.copilot_no_tab_map = true
+            vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+            vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
+            vim.keymap.set("n", "<leader>ct", function()
+                if vim.g.copilot_enabled == true then
+                    vim.g.copilot_enabled = false
+                    print("Copilot disabled")
+                else
+                    vim.g.copilot_enabled = true
+                    print("Copilot enabled")
+                end
+            end
+            )
         end,
     },
+    --]]
     --use("laytan/cloak.nvim")
     --use('tpope/vim-fugitive')
 }
