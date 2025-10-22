@@ -1,45 +1,46 @@
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>pv", ":Oil<CR>")
+local map = vim.keymap.set
+-- map("n", "<leader>pv", vim.cmd.Ex)
+map("n", "<leader>pv", ":Oil<CR>")
 
-vim.keymap.set("n", "<leader>r", ":w<CR>:make<CR>")
+map("n", "<leader>r", ":w<CR>:make<CR>")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+map("n", "J", "mzJ`z")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
-vim.keymap.set("x", "<leader>p", [["_dP]])
+map("x", "<leader>p", [["_dP]])
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+map({ "n", "v" }, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+map({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set("i", "<C-c>", "<Esc>")
+map("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+map("n", "Q", "<nop>")
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+map("n", "<C-k>", "<cmd>cnext<CR>zz")
+map("n", "<C-j>", "<cmd>cprev<CR>zz")
+map("n", "<leader>k", "<cmd>lnext<CR>zz")
+map("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader><leader>", function()
+map("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
---vim.keymap.set("n", "<leader>dsn", function()
+--map("n", "<leader>dsn", function()
 --    local file = io.open(vim.fn.expand("%"), "a")
 --    if file ~= nil then
 --        file:write("\ni = 0\nwhile i < n:\n\ti += 1")
@@ -48,12 +49,13 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 --    end
 --end)
 
--- vim.keymap.set("i", "{", "{}<C-c>i")
--- vim.keymap.set("i", "(", "()<C-c>i")
--- vim.keymap.set("i", "[", "[]<C-c>i")
+-- map("i", "{", "{}<C-c>i")
+-- map("i", "(", "()<C-c>i")
+-- map("i", "[", "[]<C-c>i")
 
 
-vim.keymap.set("n", "<leader>e", ":!einstein %<CR>")
-vim.keymap.set("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
+map("n", "<leader>e", ":!einstein %<CR>")
+map("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
+map("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
+map("t", "<esc><esc>", "<C-\\><C-n>")
