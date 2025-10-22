@@ -3,7 +3,7 @@ vim.lsp.enable({
     'lua_ls', 'bashls', 'rust_analyzer',
     'tinymist', 'r_language_server', 'ts_ls',
     'eslint', 'tailwindcss', 'jsonls',
-    'biome',
+    'biome', 'ocamllsp'
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
