@@ -17,11 +17,12 @@ local parse_blames = function(data)
         end
     end
     table.insert(commits, current_commit)
+    vim.print(commits)
 end
 
-local file = "lua/plugins/init.lua"
+local file = vim.fn.expand("%")
 local job = vim.fn.jobstart(
-    { "git", "blame", file, "--line-porcelain" },
+    { "git", "blame", file, "-p" },
     {
         on_stdout = function(_, data)
             parse_blames(data)
