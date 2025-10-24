@@ -20,6 +20,7 @@ local parse_blames = function(data)
     vim.print(commits)
 end
 
+--[[
 local file = vim.fn.expand("%")
 local job = vim.fn.jobstart(
     { "git", "blame", file, "-p" },
@@ -29,6 +30,7 @@ local job = vim.fn.jobstart(
         end,
     }
 )
+--]]
 
 local clear_virtual_text = function()
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
