@@ -54,7 +54,7 @@ map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- map("i", "[", "[]<C-c>i")
 
 
-map("n", "<leader>e", ":!einstein %<CR>")
+map("n", "<leader>e", ":w<CR>:!einstein %<CR>")
 map("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
 map("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
