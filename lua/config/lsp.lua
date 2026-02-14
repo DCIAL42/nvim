@@ -1,9 +1,8 @@
 vim.lsp.enable({
     'ruff', 'pylsp', 'clangd',
     'lua_ls', 'bashls', 'rust_analyzer',
-    'tinymist', 'r_language_server', 'ts_ls',
-    'eslint', 'tailwindcss', 'jsonls',
-    'biome', 'ocamllsp', 'hls'
+    'tinymist', 'ts_ls', 'eslint', 'tailwindcss',
+    'biome', 'ocamllsp', 'hls', 'jdtls',
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
