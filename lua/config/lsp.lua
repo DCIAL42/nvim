@@ -2,7 +2,7 @@ vim.lsp.enable({
     'ruff', 'pylsp', 'clangd',
     'lua_ls', 'bashls', 'rust_analyzer',
     'tinymist', 'r_language_server', 'ts_ls',
-    'eslint', 'tailwindcss', 'jsonls',
+    'eslint', 'tailwindcss',
     'biome', 'ocamllsp', 'hls', 'jdtls',
 })
 
