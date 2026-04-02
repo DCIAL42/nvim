@@ -168,6 +168,17 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
     },
+
+    {
+        'Maduki-tech/nvim-plantuml',
+        config = function()
+            require('plantuml').setup({
+                output_dir = '.',
+                viewer = 'open',
+                auto_refresh = true,
+            })
+        end,
+    },
     --use("laytan/cloak.nvim")
     --use('tpope/vim-fugitive')
 }
