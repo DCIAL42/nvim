@@ -1,3 +1,3 @@
-vim.lsp.config("bashls", {
+return {
     filetypes = { "bash", "sh", "zsh" },
-})
+}
