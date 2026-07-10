@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+
 -- map("n", "<leader>pv", vim.cmd.Ex)
 map("n", "<leader>pv", ":Oil<CR>")
 
@@ -26,8 +27,8 @@ map("n", "Q", "<nop>")
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 map("n", "<leader>lf", vim.lsp.buf.format)
 
-map("n", "<C-k>", "<cmd>cnext<CR>zz")
-map("n", "<C-j>", "<cmd>cprev<CR>zz")
+map("n", "<C-j>", "<cmd>cnext<CR>zz")
+map("n", "<C-k>", "<cmd>cprev<CR>zz")
 map("n", "<leader>k", "<cmd>lnext<CR>zz")
 map("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -40,18 +41,9 @@ end)
 
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
---map("n", "<leader>dsn", function()
---    local file = io.open(vim.fn.expand("%"), "a")
---    if file ~= nil then
---        file:write("\ni = 0\nwhile i < n:\n\ti += 1")
---        file:close()
---        vim.cmd("bufdo e")
---    end
---end)
-
--- map("i", "{", "{}<C-c>i")
--- map("i", "(", "()<C-c>i")
--- map("i", "[", "[]<C-c>i")
+map("i", "{", "{}<C-c>i")
+map("i", "(", "()<C-c>i")
+map("i", "[", "[]<C-c>i")
 
 
 map("n", "<leader>e", ":w<CR>:!einstein %<CR>")
@@ -59,3 +51,8 @@ map("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
 map("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
 map("t", "<esc><esc>", "<C-\\><C-n>")
+
+map("n", "<leader>zz", "<cmd>Twilight<CR><cmd>ZenMode<CR>", { noremap = true, silent = true })
+
+-- map({ "n", "v" }, "j", "jzz")
+-- map({ "n", "v" }, "k", "kzz")

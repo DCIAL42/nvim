@@ -77,17 +77,14 @@ return {
         opts = {}
     },
 
-    --[[
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        "folke/twilight.nvim",
         opts = {
-            options = {
-                theme = "vague"
-            }
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
         }
     },
-    ]] --
 
     {
         'hrsh7th/nvim-cmp',
@@ -160,25 +157,35 @@ return {
             { "nvim-lua/plenary.nvim", branch = "master" },
         },
         build = "make tiktoken",
-        opts = {
-            -- See Configuration section for options
-        },
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-    },
-
-    {
-        'Maduki-tech/nvim-plantuml',
         config = function()
-            require('plantuml').setup({
-                output_dir = '.',
-                viewer = 'open',
-                auto_refresh = true,
+            require("CopilotChat").setup({
+                model = "gpt-4.1",
             })
         end,
     },
-    --use("laytan/cloak.nvim")
-    --use('tpope/vim-fugitive')
+
+    -- {
+    --     "nvim-treesitter/nvim-treesitter-context",
+    -- },
+
+    -- {
+    --     'Maduki-tech/nvim-plantuml',
+    --     config = function()
+    --         require('plantuml').setup({
+    --             output_dir = '.',
+    --             viewer = 'open',
+    --             auto_refresh = true,
+    --         })
+    --     end,
+    -- },
+
+    {
+        'vimwiki/vimwiki',
+        init = function()
+            vim.g.vimwiki_path = '~/wiki'
+            vim.g.vimwiki_syntax = 'markdown'
+            vim.g.vimwiki_ext = 'md'
+            vim.g.vimwiki_global_ext = 0
+        end,
+    },
 }

@@ -1,9 +1,29 @@
-vim.lsp.enable({
-    'ruff', 'pylsp', 'clangd',
-    'lua_ls', 'bashls', 'rust_analyzer',
-    'tinymist', 'r_language_server', 'ts_ls',
-    'eslint', 'tailwindcss',
-    'biome', 'ocamllsp', 'hls', 'jdtls',
+-- vim.lsp.enable({
+--     'ruff', 'pylsp', 'clangd',
+--     'lua_ls', 'bashls', 'rust_analyzer',
+--     'tinymist', 'r_language_server', 'ts_ls',
+--     'ocamllsp', 'hls', 'jdtls',
+--     'gopls'
+-- })
+
+local lsp_configs = {}
+
+for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
+    local server_name = vim.fn.fnamemodify(f, ':t:r')
+    table.insert(lsp_configs, server_name)
+end
+
+vim.lsp.enable(lsp_configs)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function()
+        vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+            pattern = { "*" },
+            callback = function()
+                vim.lsp.buf.format()
+            end,
+        })
+    end,
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -50,6 +70,6 @@ require('nvim-ts-autotag').setup({
     opts = {
         enable_close = true,
         enable_rename = true,
-        enable_close_on_slash = false
+        enable_close_on_slash = true,
     },
 })
