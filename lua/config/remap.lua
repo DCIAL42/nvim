@@ -15,6 +15,17 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", [["_dP]])
+map("x", "<leader>y", [["+y]])
+
+-- Inside/around quotes
+map("n", "yiq", [[yi"]])
+map("n", "yaq", [[ya"]])
+map("n", "viq", [[vi"]])
+map("n", "vaq", [[va"]])
+map("n", "ciq", [[ci"]])
+map("n", "caq", [[ca"]])
+map("n", "diq", [[di"]])
+map("n", "daq", [[da"]])
 
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
@@ -40,11 +51,6 @@ map("n", "<leader><leader>", function()
 end)
 
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
-map("i", "{", "{}<C-c>i")
-map("i", "(", "()<C-c>i")
-map("i", "[", "[]<C-c>i")
-
 
 map("n", "<leader>e", ":w<CR>:!einstein %<CR>")
 map("n", "<Tab>", "<C-n>", { noremap = true, silent = true })

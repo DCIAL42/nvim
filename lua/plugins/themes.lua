@@ -23,11 +23,22 @@ return {
     },
 
     {
+        "RedsXDD/neopywal.nvim",
+        name = "neopywal",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent_background = true,
+            notify = "error",
+        },
+    },
+
+    {
         "zaldih/themery.nvim",
         lazy = false,
         config = function()
             require("themery").setup({
-                themes = { "tokyonight", "rose-pine", "vague" },
+                themes = { "tokyonight", "rose-pine", "vague", "neopywal" },
                 livePreview = true, -- Apply theme while picking. Default to true.
             })
         end

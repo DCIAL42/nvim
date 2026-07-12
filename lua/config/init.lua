@@ -3,3 +3,6 @@ require("config.remap")
 require("config.set")
 require("config.lazy")
 require("config.lsp")
+require("config.autocmds")
+
+vim.cmd(":hi statusline guibg=NONE")
