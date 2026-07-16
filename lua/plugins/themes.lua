@@ -40,6 +40,7 @@ return {
             require("themery").setup({
                 themes = { "tokyonight", "rose-pine", "vague", "neopywal" },
                 livePreview = true, -- Apply theme while picking. Default to true.
+                themeConfigFile = "c:\\v:null",
             })
         end
     },
