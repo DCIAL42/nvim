@@ -1,19 +1,14 @@
 return {
-    { "rose-pine/neovim", name = "rose-pine" },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine"
+    },
 
     {
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
-        opts = {},
-        config = function()
-            require("tokyonight").setup({
-                style = "night",
-                transparent = "true",
-            })
-
-            vim.cmd.colorscheme "tokyonight"
-        end,
+        opts = { style = "night", transparent = "true" },
     },
 
     {
@@ -22,26 +17,14 @@ return {
         priority = 1000, -- make sure to load this before all the other plugins
     },
 
+    { "rebelot/kanagawa.nvim" },
     {
-        "RedsXDD/neopywal.nvim",
-        name = "neopywal",
-        lazy = false,
-        priority = 1000,
-        opts = {
-            transparent_background = true,
-            notify = "error",
-        },
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000
     },
-
-    {
-        "zaldih/themery.nvim",
-        lazy = false,
-        config = function()
-            require("themery").setup({
-                themes = { "tokyonight", "rose-pine", "vague", "neopywal" },
-                livePreview = true, -- Apply theme while picking. Default to true.
-                themeConfigFile = "c:\\v:null",
-            })
-        end
-    },
+    { "EdenEast/nightfox.nvim" },
+    { "sainnhe/gruvbox-material" },
+    { "morhetz/gruvbox" },
+    { "tiagovla/tokyodark.nvim" },
 }

@@ -3,23 +3,12 @@ return {
         "mbbill/undotree",
         keys = {
             { '<leader>u', vim.cmd.UndotreeToggle },
-        }
-    },
-
-    {
-        'neovim/nvim-lspconfig',
-    },
-
-    {
-        "mason-org/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
+        },
     },
 
     {
         "folke/trouble.nvim",
-        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        opts = {},
         cmd = "Trouble",
         keys = {
             {
@@ -53,12 +42,7 @@ return {
                 desc = "Quickfix List (Trouble)",
             },
         },
-        config = function()
-            require("trouble").setup({})
-        end,
     },
-
-    { "rafamadriz/friendly-snippets" },
 
     {
         "L3MON4D3/LuaSnip",
@@ -69,6 +53,7 @@ return {
         config = function()
             require("luasnip").setup({ enable_autosnippets = true })
             require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+            require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
 
@@ -79,62 +64,43 @@ return {
 
     {
         "folke/twilight.nvim",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
+        opts = {}
     },
-
-    -- {
-    --     'hrsh7th/nvim-cmp',
-    --     dependencies = {
-    --         'hrsh7th/cmp-nvim-lsp',
-    --         'hrsh7th/cmp-buffer',
-    --         'hrsh7th/cmp-path',
-    --         'hrsh7th/cmp-cmdline',
-    --         -- Snippet engine (choose one)
-    --         -- { 'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip' },
-    --         -- Or
-    --         { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-    --         "rafamadriz/friendly-snippets",
-    --     }
-    -- },
 
     {
         'windwp/nvim-ts-autotag',
+        config = true,
     },
 
-    {
-        'chomosuke/typst-preview.nvim',
-        lazy = false, -- or ft = 'typst'
-        version = '1.*',
-        opts = {},    -- lazy.nvim will implicitly calls `setup {}`
-    },
+    -- {
+    --     'chomosuke/typst-preview.nvim',
+    --     ft = 'typst',
+    --     version = '1.*',
+    --     opts = {},
+    -- },
 
     {
         'stevearc/oil.nvim',
+        keys = {
+            { "<leader>pv", "<cmd>Oil<CR>", desc = "Oil" },
+        },
         ---@module 'oil'
         ---@type oil.SetupOpts
         opts = {},
-        -- Optional dependencies
-        dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
 
-    -- use("lervag/vimtex")
-
-    {
-        'vimwiki/vimwiki',
-        init = function()
-            vim.g.vimwiki_path = '~/wiki'
-            vim.g.vimwiki_syntax = 'markdown'
-            vim.g.vimwiki_ext = 'md'
-            vim.g.vimwiki_global_ext = 0
-        end,
-    },
+    -- {
+    --     'vimwiki/vimwiki',
+    --     init = function()
+    --         vim.g.vimwiki_path = '~/wiki'
+    --         vim.g.vimwiki_syntax = 'markdown'
+    --         vim.g.vimwiki_ext = 'md'
+    --         vim.g.vimwiki_global_ext = 0
+    --     end,
+    -- },
 
     {
         "windwp/nvim-autopairs",
@@ -171,9 +137,6 @@ return {
     --     },
     -- },
 
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-    },
 
     -- {
     --     'Maduki-tech/nvim-plantuml',
@@ -186,76 +149,13 @@ return {
     --     end,
     -- },
 
-    {
-        'elkowar/yuck.vim',
-    },
-
-    {
-        'saghen/blink.cmp',
-        -- optional: provides snippets for the snippet source
-        dependencies = { 'rafamadriz/friendly-snippets' },
-
-        -- use a release tag to download pre-built binaries
-        version = '1.*',
-        -- AND/OR build from source
-        -- build = 'cargo build --release',
-        -- If you use nix, you can build from source with:
-        -- build = 'nix run .#build-plugin',
-
-        ---@module 'blink.cmp'
-        ---@type blink.cmp.Config
-        opts = {
-            -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-            -- 'super-tab' for mappings similar to vscode (tab to accept)
-            -- 'enter' for enter to accept
-            -- 'none' for no mappings
-            --
-            -- All presets have the following mappings:
-            -- C-space: Open menu or open docs if already open
-            -- C-n/C-p or Up/Down: Select next/previous item
-            -- C-e: Hide menu
-            -- C-k: Toggle signature help (if signature.enabled = true)
-            --
-            -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = {
-                preset = 'default',
-                ['<Tab>'] = { 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'select_prev', 'fallback' },
-                ['<CR>'] = { 'accept', 'fallback' },
-            },
-
-            appearance = {
-                -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-                -- Adjusts spacing to ensure icons are aligned
-                nerd_font_variant = 'mono'
-            },
-
-            -- (Default) Only show the documentation popup when manually triggered
-            completion = { documentation = { auto_show = false } },
-
-            -- Default list of enabled providers defined so that you can extend it
-            -- elsewhere in your config, without redefining it, due to `opts_extend`
-            sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-            },
-
-            -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-            -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-            -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-            --
-            -- See the fuzzy documentation for more information
-            fuzzy = { implementation = "prefer_rust_with_warning" }
-        },
-        opts_extend = { "sources.default" }
-    },
+    -- {
+    --     'elkowar/yuck.vim',
+    -- },
 
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
+        opts = {},
     },
 }
