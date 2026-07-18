@@ -60,5 +60,5 @@ map("t", "<esc><esc>", "<C-\\><C-n>")
 
 map("n", "<leader>zz", "<cmd>Twilight<CR><cmd>ZenMode<CR>", { noremap = true, silent = true })
 
-map("n", "]q", "<cmd>try | cnext | catch | cfirst | catch | endtry<CR>")
-map("n", "[q", "<cmd>try | cprev | catch | clast | catch | endtry<CR>")
+-- map({ "n", "v" }, "j", "jzz")
+-- map({ "n", "v" }, "k", "kzz")

@@ -29,5 +29,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.showmode = false
 
--- vim.cmd(":hi statusline guibg=NONE")
+vim.cmd(":hi statusline guibg=NONE")
+
 -- vim.opt.shortmess:append("I")
+
+vim.opt.formatoptions = "jlqcr"
