@@ -10,33 +10,32 @@
 --     'ols'
 -- })
 
-local lsps = {}
+-- local lsps = {}
+--
+-- for file in vim.fs.dir(vim.fn.stdpath("config") .. "/lsp/") do
+--     table.insert(lsps, vim.fn.fnamemodify(file, ':t:r'))
+-- end
+--
+-- vim.lsp.enable(lsps)
+--
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--     callback = function(args)
+--         local client = vim.lsp.get_client_by_id(args.data.client_id)
+--         if client and client:supports_method("textDocument/formatting") then
+--             vim.api.nvim_create_autocmd("BufWritePre", {
+--                 buffer = args.buf,
+--                 callback = function()
+--                     vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+--                 end,
+--             })
+--         end
+--     end,
+-- })
 
-for file in vim.fs.dir(vim.fn.stdpath("config") .. "/lsp/") do
-    table.insert(lsps, vim.fn.fnamemodify(file, ':t:r'))
-end
 
-vim.lsp.enable(lsps)
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client and client:supports_method("textDocument/formatting") then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = args.buf,
-                callback = function()
-                    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-                end,
-            })
-        end
-    end,
-})
-
-require("luasnip.loaders.from_vscode").lazy_load()
-
-local filetype_extend = require("luasnip").filetype_extend
-filetype_extend("typescriptreact", { "html" })
-filetype_extend("javascriptreact", { "html" })
+-- local filetype_extend = require("luasnip").filetype_extend
+-- filetype_extend("typescriptreact", { "html" })
+-- filetype_extend("javascriptreact", { "html" })
 
 -- local cmp = require 'cmp'
 --
@@ -80,10 +79,10 @@ vim.diagnostic.config({
     },
 })
 
-require('nvim-ts-autotag').setup({
-    opts = {
-        enable_close = true,
-        enable_rename = true,
-        enable_close_on_slash = true,
-    },
-})
+-- require('nvim-ts-autotag').setup({
+--     opts = {
+--         enable_close = true,
+--         enable_rename = true,
+--         enable_close_on_slash = true,
+--     },
+-- })

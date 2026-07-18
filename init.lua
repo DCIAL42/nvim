@@ -1,4 +1,5 @@
-require('config')
+require "config"
+require "plugin"
 -- require("plugin.testfloat").setup {}
 
 

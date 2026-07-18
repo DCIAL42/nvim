@@ -5,4 +5,4 @@ require("config.lazy")
 require("config.lsp")
 require("config.autocmds")
 
-vim.cmd(":hi statusline guibg=NONE")
+-- vim.cmd(":hi statusline guibg=NONE")
