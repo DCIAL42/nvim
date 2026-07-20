@@ -7,64 +7,14 @@ return {
     },
 
     {
-        "folke/trouble.nvim",
-        opts = {},
-        cmd = "Trouble",
+        "folke/zen-mode.nvim",
         keys = {
             {
-                "<leader>xx",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Diagnostics (Trouble)",
-            },
-            {
-                "<leader>xX",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                desc = "Buffer Diagnostics (Trouble)",
-            },
-            {
-                "<leader>cs",
-                "<cmd>Trouble symbols toggle focus=false<cr>",
-                desc = "Symbols (Trouble)",
-            },
-            {
-                "<leader>cl",
-                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-                desc = "LSP Definitions / references / ... (Trouble)",
-            },
-            {
-                "<leader>xL",
-                "<cmd>Trouble loclist toggle<cr>",
-                desc = "Location List (Trouble)",
-            },
-            {
-                "<leader>xQ",
-                "<cmd>Trouble qflist toggle<cr>",
-                desc = "Quickfix List (Trouble)",
+                "<leader>zz", "<cmd>ZenMode<CR>", noremap = true, silent = true,
             },
         },
-    },
-
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-        config = function()
-            require("luasnip").setup({ enable_autosnippets = true })
-            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
-
-    {
-        "folke/zen-mode.nvim",
-        opts = {}
-    },
-
-    {
-        "folke/twilight.nvim",
-        opts = {}
+        dependencies = { "folke/twilight.nvim", opts = {} },
+        opts = { plugins = { twilight = { enabled = true } } }
     },
 
     {
@@ -72,25 +22,55 @@ return {
         config = true,
     },
 
+    {
+        'stevearc/oil.nvim',
+        keys = {
+            {
+                "<leader>pv",
+                function()
+                    local oil = require("oil")
+                    oil.open_float()
+                end,
+                desc = "Oil"
+            },
+        },
+        opts = {
+            delete_to_trash = true,
+            view_options = {
+                show_hidden = true,
+            },
+            float = {
+                max_width = 0.6,
+                border = "single",
+            },
+        },
+        dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
+        lazy = false,
+    },
+
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+    },
+
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
+    },
+
+    -- {
+    --     'stevearc/dressing.nvim',
+    --     opts = {},
+    -- },
+
     -- {
     --     'chomosuke/typst-preview.nvim',
     --     ft = 'typst',
     --     version = '1.*',
     --     opts = {},
     -- },
-
-    {
-        'stevearc/oil.nvim',
-        keys = {
-            { "<leader>pv", "<cmd>Oil<CR>", desc = "Oil" },
-        },
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-        lazy = false,
-    },
 
     -- {
     --     'vimwiki/vimwiki',
@@ -102,11 +82,6 @@ return {
     --     end,
     -- },
 
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-    },
     -- {
     --     "github/copilot.vim",
     --     config = function()
@@ -126,6 +101,7 @@ return {
     --         )
     --     end,
     -- },
+
     -- {
     --     "CopilotC-Nvim/CopilotChat.nvim",
     --     dependencies = {
@@ -136,7 +112,6 @@ return {
     --         -- See Configuration section for options
     --     },
     -- },
-
 
     -- {
     --     'Maduki-tech/nvim-plantuml',
@@ -152,10 +127,4 @@ return {
     -- {
     --     'elkowar/yuck.vim',
     -- },
-
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-    },
 }
