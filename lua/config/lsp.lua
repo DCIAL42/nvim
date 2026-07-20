@@ -6,11 +6,6 @@
 --
 -- vim.lsp.enable(lsps)
 
-
--- local filetype_extend = require("luasnip").filetype_extend
--- filetype_extend("typescriptreact", { "html" })
--- filetype_extend("javascriptreact", { "html" })
-
 vim.diagnostic.config({
     virtual_text = true,
     signs = true,
