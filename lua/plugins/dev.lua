@@ -1,10 +1,13 @@
 return {
     {
-        dir = "~/plugins/theme.nvim/",
+        "theme.nvim",
         config = true,
+        dev = true,
     },
+
     {
-        dir = "~/plugins/line.nvim/",
+        "line.nvim",
         config = true,
+        dev = true,
     },
 }
