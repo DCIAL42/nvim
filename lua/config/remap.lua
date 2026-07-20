@@ -41,8 +41,10 @@ map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 map("n", "<leader><leader>", "<cmd>so<CR>", { silent = true })
 
-map("n", "<leader>e", "<cmd>w<CR><cmd>!einstein %<CR>")
+map("n", "<leader>e", ":w<CR>:!einstein %<CR>")
 -- map("n", "<Tab>", "<C-n>", { noremap = true, silent = true })
 -- map("n", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
 map("t", "<esc><esc>", "<C-\\><C-n>")
+
+map("n", "<leader>zz", "<cmd>Twilight<CR><cmd>ZenMode<CR>", { noremap = true, silent = true })
