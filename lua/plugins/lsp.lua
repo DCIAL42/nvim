@@ -19,31 +19,71 @@ return {
     },
 
     {
-        'saghen/blink.cmp',
-        dependencies = { 'saghen/blink.lib', 'rafamadriz/friendly-snippets' },
-
-        build = function() require("blink.cmp").build():pwait() end,
-
-        ---@module 'blink.cmp'
-        ---@type blink.cmp.Config
-        opts = {
-            keymap = {
-                preset = 'default',
-                ['<Tab>'] = { 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'select_prev', 'fallback' },
-                ['<CR>'] = { 'accept', 'fallback' },
-            },
-
-            completion = { documentation = { auto_show = true } },
-
-            sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-            },
-
-            fuzzy = { implementation = "prefer_rust_with_warning" },
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            -- Snippet engine (choose one)
+            -- { 'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip' },
+            -- Or
+            { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+            "rafamadriz/friendly-snippets",
         },
-        opts_extend = { "sources.default" }
+        config = function()
+            local cmp = require 'cmp'
+
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<CR>'] = cmp.mapping.confirm(), -- Accept currently selected item.
+                    ['<Tab>'] = cmp.mapping.select_next_item(),
+                    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+                }),
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                    -- Add other sources if needed:
+                    { name = 'luasnip' },
+                    { name = 'buffer' },
+                    { name = 'path' },
+                    { name = 'neorg' },
+                })
+            })
+        end,
     },
+
+    -- {
+    --     'saghen/blink.cmp',
+    --     dependencies = { 'saghen/blink.lib', 'rafamadriz/friendly-snippets' },
+    --
+    --     build = function() require("blink.cmp").build():pwait() end,
+    --
+    --     ---@module 'blink.cmp'
+    --     ---@type blink.cmp.Config
+    --     opts = {
+    --         keymap = {
+    --             preset = 'default',
+    --             ['<Tab>'] = { 'select_next', 'fallback' },
+    --             ['<S-Tab>'] = { 'select_prev', 'fallback' },
+    --             ['<CR>'] = { 'accept', 'fallback' },
+    --         },
+    --
+    --         completion = { documentation = { auto_show = true } },
+    --
+    --         sources = {
+    --             default = { 'lsp', 'path', 'snippets', 'buffer' },
+    --         },
+    --
+    --         fuzzy = { implementation = "prefer_rust_with_warning" },
+    --     },
+    --     opts_extend = { "sources.default" }
+    -- },
 
     {
         "L3MON4D3/LuaSnip",

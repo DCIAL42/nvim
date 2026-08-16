@@ -31,3 +31,5 @@ vim.opt.showmode = false
 
 -- vim.cmd(":hi statusline guibg=NONE")
 -- vim.opt.shortmess:append("I")
+
+vim.opt.conceallevel = 2
